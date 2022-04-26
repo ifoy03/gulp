@@ -1,0 +1,38 @@
+@import "variables"
+@import "mixins"
+@import "fonts"
+@import "blocks"
+@import "nav"
+@import "header"
+
+*,
+*::after,
+*::before
+  text-decoration: none
+  box-sizing: border-box
+button
+  outline: none
+  border: none
+  background: none
+  cursor: pointer
+ul
+  padding: 0
+  list-style-type: none
+html
+  font-family: sans-serif
+  font-weight: 400
+  font-size: calc($minFsize + $stepFsize *(100vw / $initWidth))
+  @include ipadless
+    &
+      font-size: calc($minFsize + ($stepFsize + $stepFsize * 0.7) * ((100vw - $minWidth)/$initWidth) )
+    
+body
+  background-color: #000
+  margin: 0
+  padding: 0
+  position: relative
+section,
+.header
+  display: block
+  padding-top: 7em
+  padding-bottom: 7em
