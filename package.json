@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp"
   },
   "author": "ifoy",
   "license": "ISC",
@@ -32,8 +32,6 @@
     "gulp-webp-html-nosvg": "latest",
     "gulp-webpcss": "latest",
     "sass": "latest",
-    "webp-converter": "2.2.3",
-    "webpack": "latest",
-    "webpack-stream": "latest"
+    "webp-converter": "2.2.3"
   }
 }

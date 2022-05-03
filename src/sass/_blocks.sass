@@ -1,10 +1,12 @@
 // Grid =============================================================================================
-._container
+.container
   margin: 0 auto
-  max-width: $containerWidth
-  padding: 0 5rem
-.wrapper
-  &__row
-    flex: 0 1 100%
-  &__column
-    flex: 1 1 0
+  max-width: $containerWidth - 4rem
+  padding: 0 2rem
+
+.row
+  display: flex
+  flex-direction: row
+.column
+  display: flex
+  flex-direction: column

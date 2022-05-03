@@ -1,9 +1,6 @@
 @import "variables"
 @import "mixins"
 @import "fonts"
-@import "blocks"
-@import "nav"
-@import "header"
 
 *,
 *::after,
@@ -25,14 +22,17 @@ html
   @include ipadless
     &
       font-size: calc($minFsize + ($stepFsize + $stepFsize * 0.7) * ((100vw - $minWidth)/$initWidth) )
-    
+
 body
-  background-color: #000
+  background-color: $bodyColor
   margin: 0
   padding: 0
   position: relative
-section,
-.header
+.section
   display: block
-  padding-top: 7em
-  padding-bottom: 7em
+  padding-top: $padding
+  padding-bottom: $padding
+
+@import "blocks"
+@import "header"
+@import "footer"
