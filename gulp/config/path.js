@@ -1,35 +1,31 @@
-// Getting the name of the project 
- 
-import * as nodePath from 'path';
-const rootFolder = nodePath.basename(nodePath.resolve());
+// Getting the name of the project
 
+import * as nodePath from "path";
+const rootFolder = nodePath.basename(nodePath.resolve());
 
 const buildFolder = `./${rootFolder}`;
 const srcFolder = "./src";
 
 export const path = {
-  build:{
-    js: `${buildFolder}/js/`,
-    css: `${buildFolder}/css/`,
+  build: {
+    js: `${buildFolder}/assets/js/`,
+    css: `${buildFolder}/assets/css/`,
     html: `${buildFolder}/`,
-    files: `${buildFolder}/files/`,
-    fonts: `${buildFolder}/fonts/`,
-    images: `${buildFolder}/img/`
+    fonts: `${buildFolder}/assets/fonts/`,
+    images: `${buildFolder}/assets/images/`,
   },
   src: {
-    js: `${srcFolder}/js/app.js`,
-    sass: `${srcFolder}/sass/style.sass`,
+    js: `${srcFolder}/assets/modules/script.js`,
+    sass: `${srcFolder}/assets/theme/style.scss`,
     html: `${srcFolder}/*.html`,
-    files: `${srcFolder}/files/**/*.*`,
-    images: `${srcFolder}/img/**/*.{png,jpg,jpeg,gif,webp}`,
-    svg: `${srcFolder}/img/**/*.svg`
+    images: `${srcFolder}/assets/images/**/*.{png,jpg,jpeg,gif,webp}`,
+    svg: `${srcFolder}/assets/images/**/*.svg`,
   },
-  watch:{
+  watch: {
     js: `${srcFolder}/**/*.js`,
-    sass: `${srcFolder}/**/*.sass`,
+    sass: `${srcFolder}/**/*.scss`,
     html: `${srcFolder}/**/*.html`,
-    files: `${srcFolder}/files/**/*.*`,
-    images: `${srcFolder}/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`
+    images: `${srcFolder}/assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`,
   },
   clean: buildFolder,
   buildFolder: buildFolder,

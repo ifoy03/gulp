@@ -20,7 +20,6 @@ export const sass = () => {
         })
       )
     )
-    .pipe(app.plugins.replace(/@img\//g, "../img/"))
     .pipe(
       scss({
         outputStyle: "expanded",
@@ -35,10 +34,11 @@ export const sass = () => {
     .pipe(
       autoprefixer({
         grid: true,
-        overrideBrowserslist: ["last 3 versions"],
+        overrideBrowserslist: ["last 15 version", "> 1%", "ie 8", "ie 7"],
         cascade: true,
       })
     )
+    .pipe(app.plugins.replace(/@img\//g, "../img/"))
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(cleanCss())
     .pipe(
