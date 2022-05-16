@@ -1,0 +1,26 @@
+@import "../../components/modals/form/form";
+@import "../../components/modals/thanks/thanks";
+
+.modal {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.modal {
+  &-wrapper {
+    display: flex;
+  }
+}
+.modal-wrapper {
+  width: 100vw;
+  height: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: rgba($dark-color, 0.6);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+}

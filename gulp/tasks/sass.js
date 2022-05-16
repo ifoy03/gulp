@@ -38,7 +38,7 @@ export const sass = () => {
         cascade: true,
       })
     )
-    .pipe(app.plugins.replace(/@img\//g, "../img/"))
+    .pipe(app.plugins.replace(/@img\//g, "../assets/images/"))
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(cleanCss())
     .pipe(

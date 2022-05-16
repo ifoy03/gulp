@@ -22,7 +22,12 @@ import { server } from "./gulp/tasks/server.js";
 import { sass } from "./gulp/tasks/sass.js";
 import { js } from "./gulp/tasks/js.js";
 import { images } from "./gulp/tasks/images.js";
-import { otfToTtf, ttfToWoff, fontsStyle } from "./gulp/tasks/font.js";
+import {
+  otfToTtf,
+  ttfToWoff,
+  woffAndWoff2,
+  fontsStyle,
+} from "./gulp/tasks/font.js";
 
 // Watcher function
 
@@ -33,7 +38,7 @@ function watcher() {
   gulp.watch(path.watch.images, images);
 }
 
-const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
+const fonts = gulp.series(otfToTtf, ttfToWoff, woffAndWoff2, fontsStyle);
 
 const mainTasks = gulp.series(fonts, gulp.parallel(html, sass, js, images));
 

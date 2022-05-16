@@ -43,6 +43,12 @@ export const ttfToWoff = () => {
     .pipe(app.gulp.dest(`${app.path.build.fonts}`));
 };
 
+export const woffAndWoff2 = () => {
+  return app.gulp
+    .src(`${app.path.srcFolder}/assets/fonts/*.{woff,woff2}`, {})
+    .pipe(app.gulp.dest(`${app.path.build.fonts}`));
+};
+
 export const fontsStyle = () => {
   let fontsFile = `${app.path.srcFolder}/assets/theme/_fonts.sass`;
   fs.readdir(app.path.build.fonts, function (err, fontsFiles) {

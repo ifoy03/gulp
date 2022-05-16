@@ -1,9 +1,15 @@
 <header class="header">
-  <div class="container">
-    <div class="header__logo"></div>
-    <!-- ! Connecting the navbar -->
-    @@include("./navbar/_navbar.html",{})
-
-    <div class="header__menu"></div>
+  @@include("./navbar/_navbar.html", {})
+  <div class="header__slider slider container">
+    <div class="slider__menu">
+      @@include('../blocks/main-title/_main-title.html', { 'title-light':
+      "project", 'title-dark': "lorum" })
+    </div>
+    <!-- /.slider__menu -->
+    <div class="slider__item">
+      <img src="@img/header/project.jpg" alt="#" class="slider__item-img" />
+    </div>
+    <!-- /.slider__item -->
   </div>
+  <!-- /.header__slider slider -->
 </header>
