@@ -1,15 +1,15 @@
-import dartSass from "sass";
-import gulpSass from "gulp-sass";
-import rename from "gulp-rename";
 
-import cleanCss from "gulp-clean-css";
-import webpcss from "gulp-webpcss";
-import autoprefixer from "gulp-autoprefixer";
-import groupCssMediaQueries from "gulp-group-css-media-queries";
+const rename = require("gulp-rename");
+
+const dartSass = require("sass");
+const gulpSass = require("gulp-sass");
+const cleanCss = require("gulp-clean-css");
+const webpcss = require("gulp-webpcss");
+const autoprefixer = require("gulp-autoprefixer");
+const groupCssMediaQueries = require("gulp-group-css-media-queries");
 
 const scss = gulpSass(dartSass);
-
-export const sass = () => {
+const sass = () => {
   return app.gulp
     .src(app.path.src.sass, { sourcemaps: true })
     .pipe(
@@ -47,5 +47,6 @@ export const sass = () => {
       })
     )
     .pipe(app.gulp.dest(app.path.build.css))
-    .pipe(app.plugins.browsersync.stream());
 };
+
+module.exports = sass;

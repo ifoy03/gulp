@@ -1,44 +1,31 @@
-// Main module
-import gulp from "gulp";
+const gulp = require('gulp');
+// const sourcemaps = require('gulp-sourcemaps');
+const paths = require("./gulp/config/paths")
+const plugins = require("./gulp/config/plugins")
 
-//Import the moudels
+const font = require("./gulp/tasks/font");
+const html = require("./gulp/tasks/html");
+const images = require("./gulp/tasks/images");
+const js = require("./gulp/tasks/js");
+const reset = require("./gulp/tasks/reset")
+const sass = require("./gulp/tasks/sass");
+const server = require("./gulp/tasks/server")
 
-import { path } from "./gulp/config/path.js";
-// Import the plugins
-import { plugins } from "./gulp/config/plugins.js";
-
-// Global variable
 global.app = {
-  path: path,
-  gulp: gulp,
-  plugins: plugins,
+    path: paths,
+    gulp: gulp,
+    plugins: plugins,
 };
 
-// Tasks import
-// import { copy } from "./gulp/tasks/copy.js";
-import { reset } from "./gulp/tasks/reset.js";
-import { html } from "./gulp/tasks/html.js";
-import { server } from "./gulp/tasks/server.js";
-import { sass } from "./gulp/tasks/sass.js";
-import { js } from "./gulp/tasks/js.js";
-import { images } from "./gulp/tasks/images.js";
-import {
-  otfToTtf,
-  ttfToWoff,
-  woffAndWoff2,
-  fontsStyle,
-} from "./gulp/tasks/font.js";
-
-// Watcher function
-
 function watcher() {
-  gulp.watch(path.watch.html, html);
-  gulp.watch(path.watch.sass, sass);
-  gulp.watch(path.watch.js, js);
-  gulp.watch(path.watch.images, images);
+    gulp.watch(paths.watch.html, html);
+    gulp.watch(paths.watch.sass, sass);
+    gulp.watch(paths.watch.js, js);
+    gulp.watch(paths.watch.images, images);
 }
 
-const fonts = gulp.series(otfToTtf, ttfToWoff, woffAndWoff2, fontsStyle);
+
+const fonts = gulp.series(font.otfToTtf, font.ttfToWoff, font.woffAndWoff2, font.fontsStyle);
 
 const mainTasks = gulp.series(fonts, gulp.parallel(html, sass, js, images));
 

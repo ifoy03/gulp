@@ -1,8 +1,7 @@
-import fileInclude from "gulp-file-include";
-import webpHtmlNosvg from "gulp-webp-html-nosvg";
-import versionNumber from "gulp-version-number";
-
-export const html = () => {
+const pug = require('gulp-pug');
+const webpHtmlNosvg = require("gulp-webp-html-nosvg");
+const versionNumber = require("gulp-version-number");
+const html = () => {
   return app.gulp
     .src(app.path.src.html)
     .pipe(
@@ -13,7 +12,7 @@ export const html = () => {
         })
       )
     )
-    .pipe(fileInclude())
+    .pipe(pug({ locals: {}, pretty: true }))
     .pipe(app.plugins.replace(/@img\//g, "assets/images/"))
     .pipe(webpHtmlNosvg())
     .pipe(
@@ -30,5 +29,6 @@ export const html = () => {
       })
     )
     .pipe(app.gulp.dest(app.path.build.html))
-    .pipe(app.plugins.browsersync.stream());
 };
+module.exports = html;
+

@@ -1,10 +1,10 @@
-import fs, { appendFile } from "fs";
-import fonter from "gulp-fonter";
-import ttf2woff2 from "gulp-ttf2woff2";
+const fs = require("fs");
+const fonter = require("gulp-fonter");
+const ttf2woff2 = require("gulp-ttf2woff2");
 
-export const otfToTtf = () => {
+const otfToTtf = () => {
   return app.gulp
-    .src(`${app.path.srcFolder}/assets/fonts/*.otf`, {})
+    .src(`${app.path.srcFolder}/assets/theme/fonts/*.otf`, {})
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -18,12 +18,12 @@ export const otfToTtf = () => {
         formats: ["ttf"],
       })
     )
-    .pipe(app.gulp.dest(`${app.path.srcFolder}/assets/fonts/`));
+    .pipe(app.gulp.dest(`${app.path.srcFolder}/assets/theme/fonts/`));
 };
 
-export const ttfToWoff = () => {
+const ttfToWoff = () => {
   return app.gulp
-    .src(`${app.path.srcFolder}/assets/fonts/*.ttf`, {})
+    .src(`${app.path.srcFolder}/assets/theme/fonts/*.ttf`, {})
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -38,19 +38,19 @@ export const ttfToWoff = () => {
       })
     )
     .pipe(app.gulp.dest(`${app.path.build.fonts}`))
-    .pipe(app.gulp.src(`${app.path.srcFolder}/assets/fonts/*.ttf`))
+    .pipe(app.gulp.src(`${app.path.srcFolder}/assets/theme/fonts/*.ttf`))
     .pipe(ttf2woff2())
     .pipe(app.gulp.dest(`${app.path.build.fonts}`));
 };
 
-export const woffAndWoff2 = () => {
+const woffAndWoff2 = () => {
   return app.gulp
-    .src(`${app.path.srcFolder}/assets/fonts/*.{woff,woff2}`, {})
+    .src(`${app.path.srcFolder}/assets/theme/fonts/*.{woff,woff2}`, {})
     .pipe(app.gulp.dest(`${app.path.build.fonts}`));
 };
 
-export const fontsStyle = () => {
-  let fontsFile = `${app.path.srcFolder}/assets/theme/_fonts.sass`;
+const fontsStyle = () => {
+  let fontsFile = `${app.path.srcFolder}/assets/theme/_fonts.scss`;
   fs.readdir(app.path.build.fonts, function (err, fontsFiles) {
     if (fontsFiles) {
       if (!fs.existsSync(fontsFile)) {
@@ -89,7 +89,7 @@ export const fontsStyle = () => {
             }
             fs.appendFile(
               fontsFile,
-              `@font-face \n\tfont-family: "${fontName}"\n\tfont-display: swap\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff")\n\tfont-weight: ${fontWeight}\n\tfont-style: normal\n\t\r\n`,
+              `@font-face {\n\tfont-family: "${fontName}";\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;}\n\t\r\n`,
               cb
             );
             newFileOnly = fontFileName;
@@ -102,5 +102,12 @@ export const fontsStyle = () => {
   });
 
   return app.gulp.src(`${app.path.srcFolder}`);
-  function cb() {}
+  function cb() { }
 };
+
+module.exports = {
+  otfToTtf: otfToTtf,
+  ttfToWoff: ttfToWoff,
+  woffAndWoff2: woffAndWoff2,
+  fontsStyle: fontsStyle,
+}

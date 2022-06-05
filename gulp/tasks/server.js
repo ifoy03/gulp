@@ -1,9 +1,8 @@
-export const server = (done) =>{
+const server = (done) => {
   app.plugins.browsersync.init({
-    server: {
-      baseDir: `${app.path.build.html}`
-    },
-    notify: false,
-    port: 3000
-  })
+    server: app.path.buildFolder
+  });
+  app.plugins.browsersync.watch(app.path.buildFolder + '/**/*.*', app.plugins.browsersync.reload);
 }
+
+module.exports = server;

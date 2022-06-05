@@ -1,10 +1,10 @@
-import replace from "gulp-replace";
-import plumber from "gulp-plumber";
-import notify from "gulp-notify";
-import browsersync from "browser-sync";
-import newer from "gulp-newer";
+const replace = require("gulp-replace");
+const plumber = require("gulp-plumber");
+const notify = require("gulp-notify");
+const browsersync = require("browser-sync");
+const newer = require("gulp-newer");
 
-export const plugins = {
+module.exports = {
   replace: replace,
   plumber: plumber,
   notify: notify,
